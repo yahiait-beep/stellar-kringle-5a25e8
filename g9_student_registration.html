@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تسجيل المجموعات — الصف التاسع</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+:root{--navy:#1b4332;--gold:#d4a017;--green:#2d6a4f;--red:#dc2626;--p1:#1b4332;--p1l:#d8f3dc;--p1b:#95d5b2;--p2:#6d4c41;--p2l:#efebe9;--p2b:#d7ccc8;--p3:#1565c0;--p3l:#e3f2fd;--p3b:#90caf9;--card:#fff;--text:#1a2332;--muted:#6b7a8d;--border:#c8e6c9;--r:14px;--sh:0 4px 20px rgba(27,67,50,.10);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Cairo',sans-serif;background:linear-gradient(135deg,#d8f3dc 0%,#f0fdf4 60%,#fff8e1 100%);min-height:100vh;direction:rtl;color:var(--text)}
+.sbar{background:#0f2b1a;color:rgba(255,255,255,.85);text-align:center;padding:9px;font-size:.8rem;display:flex;align-items:center;justify-content:center;gap:8px}
+.sdot{width:8px;height:8px;border-radius:50%;background:#86efac;animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#86efac;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+header{background:linear-gradient(135deg,var(--navy),#2d6a4f);color:#fff;padding:22px 20px;text-align:center}
+header h1{font-size:1.6rem;font-weight:900}
+header p{font-size:.88rem;opacity:.82;margin-top:4px}
+.badge{display:inline-block;background:var(--gold);color:#1a2332;padding:3px 16px;border-radius:50px;font-weight:900;font-size:.83rem;margin-top:7px}
+.live-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:50px;font-size:.76rem;font-weight:700;background:rgba(255,255,255,.18);color:#fff;border:1.5px solid rgba(255,255,255,.3);margin-top:8px}
+.wrap{max-width:560px;margin:0 auto;padding:22px 16px 50px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:24px;border:1.5px solid var(--border);margin-bottom:14px}
+label{display:block;font-weight:700;color:var(--navy);font-size:.88rem;margin-bottom:5px}
+input[type=text]{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:10px;font-family:'Cairo',sans-serif;font-size:.95rem;direction:rtl;margin-bottom:14px;background:#fafbfc;transition:border-color .2s}
+input:focus{outline:none;border-color:var(--gold);background:#fff}
+.btn{width:100%;padding:13px;border:none;border-radius:11px;font-family:'Cairo',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s}
+.btn-p{background:linear-gradient(135deg,var(--navy),#2d6a4f);color:#fff;box-shadow:0 4px 14px rgba(27,67,50,.2)}
+.btn-p:hover{transform:translateY(-2px)}
+.btn-p:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.gg{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-bottom:14px}
+.gb{aspect-ratio:1;border-radius:11px;border:2.5px solid var(--border);background:#f5f8fc;font-family:'Cairo',sans-serif;font-weight:900;color:var(--navy);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:all .18s;font-size:.95rem}
+.gb:hover:not(.gf):not(.gs){border-color:var(--gold);background:#fffde7;transform:translateY(-2px)}
+.gs{border-color:var(--gold);background:linear-gradient(135deg,#fffde7,#fff9c4);box-shadow:0 3px 10px rgba(212,160,23,.25)}
+.gf{opacity:.42;cursor:not-allowed;background:#f0f0f0;border-color:#ddd}
+.gc{font-size:.58rem;color:var(--muted)}.gfl{font-size:.55rem;color:var(--red);font-weight:700}
+.po{padding:13px 15px;border:2.5px solid var(--border);border-radius:12px;cursor:pointer;margin-bottom:9px;background:#fafbfc;transition:all .18s}
+.po:hover:not(.pd){border-color:var(--gold);background:#fffde7}
+.ps{border-color:var(--navy);background:linear-gradient(135deg,#d8f3dc,#b7e4c7)}
+.pd{opacity:.42;cursor:not-allowed}
+.pn{font-weight:700;font-size:.95rem;color:var(--navy)}.pd2{font-size:.78rem;color:var(--muted);margin-top:2px}.ptk{font-size:.72rem;color:var(--red);font-weight:700;margin-top:2px}
+.al{padding:10px 13px;border-radius:9px;font-size:.86rem;font-weight:600;margin-bottom:12px;display:none}
+.al-e{background:#fdecea;color:var(--red);border:1.5px solid #fca5a5}
+.al-i{background:var(--p1l);color:var(--navy);border:1.5px solid var(--p1b)}
+.succ{text-align:center;padding:16px 0}
+.succ .ico{font-size:3.8rem;margin-bottom:10px}
+.succ h3{font-size:1.2rem;font-weight:900;color:var(--navy)}
+.succ p{color:var(--muted);margin-top:6px;font-size:.9rem}
+.loading{text-align:center;padding:26px;color:var(--muted);font-size:.9rem}
+.mrow{display:flex;justify-content:space-between;align-items:center;padding:7px 9px;border-radius:9px;background:#f9fafb;border:1px solid var(--border);margin-bottom:5px;font-size:.81rem;flex-wrap:wrap;gap:3px}
+.tag{font-size:.69rem;padding:2px 9px;border-radius:50px;font-weight:700}
+.t1{background:var(--p1l);color:var(--p1)}.t2{background:var(--p2l);color:var(--p2)}.t3{background:var(--p3l);color:var(--p3)}.t0{background:#f3f4f6;color:#9ca3af}
+</style>
+</head>
+<body>
+<div class="sbar" id="sbar"><div class="spin"></div> جاري الاتصال...</div>
+<header>
+  <div class="badge">🎓 الصف التاسع | Grade 9</div>
+  <h1>🤖 مشاريع الذكاء الاصطناعي</h1>
+  <p>سجّل في مجموعتك — البيانات تظهر للمعلم فوراً</p>
+  <div class="live-badge"><span class="sdot"></span>مزامنة فورية — بدون تسجيل</div>
+</header>
+<div class="wrap">
+  <div class="card">
+    <div id="la" class="loading"><div class="spin"></div> جاري تحميل البيانات...</div>
+    <div id="fa" style="display:none">
+      <div id="alm" class="al"></div>
+      <label>① اختر رقم مجموعتك</label>
+      <div class="gg" id="gg"></div>
+      <div id="gi" class="al al-i" style="display:none"></div>
+      <label>② اسمك الكامل</label>
+      <input type="text" id="sn" placeholder="أدخل اسمك الكامل هنا..."/>
+      <label>③ مشروع مجموعتك</label>
+      <div id="po"></div>
+      <button class="btn btn-p" id="jbtn" onclick="joinGroup()">✅ تسجيل في المجموعة</button>
+    </div>
+    <div id="sa" class="succ" style="display:none">
+      <div class="ico">🎉</div>
+      <h3>تم التسجيل بنجاح!</h3>
+      <p id="sm"></p>
+      <p style="margin-top:8px;font-size:.83rem;color:var(--green);font-weight:600">✅ ظهر اسمك الآن عند المعلم</p>
+      <button class="btn btn-p" style="margin-top:16px" onclick="resetF()">تسجيل طالب آخر</button>
+    </div>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px">
+      <span style="font-size:.94rem;font-weight:700;color:var(--navy)">👥 حالة المجموعات الآن</span>
+      <span id="ls" style="font-size:.74rem;color:var(--muted)">جاري التحديث...</span>
+    </div>
+    <div id="mg"><div class="loading">جاري التحميل...</div></div>
+  </div>
+</div>
+<script>
+const FB_URL='https://school-ai-projects-d4d48-default-rtdb.firebaseio.com';
+const DB_KEY='g9';
+const MAX=5;
+const PROJS=[
+  {id:1,name:'🏠 المشروع 1: مهام المنزل العائلية',en:'Family House Quests'},
+  {id:2,name:'🍽️ المشروع 2: قياس جودة الوجبات', en:'Meal Quality Meter'},
+  {id:3,name:'🦾 المشروع 3: ذراع فرز النفايات',  en:'Waste Sorting Robotic Arm'},
+];
+let db={numGroups:10,groups:{}}, sg=null, sp=null, rdy=false;
+async function fbGet(p){const r=await fetch(`${FB_URL}/${DB_KEY}/${p}.json`);return r.ok?r.json():null;}
+async function fbSet(p,v){await fetch(`${FB_URL}/${DB_KEY}/${p}.json`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(v)});}
+async function fbPatch(p,v){await fetch(`${FB_URL}/${DB_KEY}/${p}.json`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(v)});}
+async function loadDB(){
+  try{
+    const data=await fbGet('');
+    db.groups=   (data&&data.groups)   ?data.groups   :{};
+    db.numGroups=(data&&data.numGroups)?data.numGroups:10;
+    const n=new Date(),t=`${n.getHours().toString().padStart(2,'0')}:${n.getMinutes().toString().padStart(2,'0')}:${n.getSeconds().toString().padStart(2,'0')}`;
+    document.getElementById('sbar').innerHTML=`<span class="sdot"></span> متصل — ${t}`;
+  }catch(e){document.getElementById('sbar').textContent='⚠️ خطأ في الاتصال';}
+}
+function gm(g){return(db.groups[g]&&db.groups[g].members)?db.groups[g].members:{};}
+function gmArr(g){return Object.values(gm(g));}
+function gp(g){return(db.groups[g]&&db.groups[g].project)?db.groups[g].project:null;}
+function pObj(id){return PROJS.find(p=>p.id===id);}
+function tCls(id){return id?'t'+id:'t0';}
+function tLbl(id){const p=pObj(id);return p?(p.name.split(':')[1]||'').trim().split(' ')[0]:'—';}
+function allNames(){let a=[];for(let g in db.groups)a=a.concat(gmArr(g));return a;}
+function renderGrid(){
+  const el=document.getElementById('gg');el.innerHTML='';
+  for(let i=1;i<=db.numGroups;i++){
+    const cnt=gmArr(i).length,full=cnt>=MAX;
+    const b=document.createElement('button');
+    b.className='gb'+(full?' gf':'')+(sg===i?' gs':'');
+    b.innerHTML=`<span>${i}</span><span class="gc">${cnt}/${MAX}</span>${full?'<span class="gfl">ممتلئة</span>':''}`;
+    if(!full) b.onclick=()=>selG(i);
+    el.appendChild(b);
+  }
+}
+function selG(g){
+  sg=g;
+  const info=document.getElementById('gi');
+  info.textContent=`✓ اخترت المجموعة ${g} — بها ${gmArr(g).length} من ${MAX} طلاب`;
+  info.style.display='block';
+  renderGrid();renderPO(gp(g));
+}
+function renderPO(locked){
+  const el=document.getElementById('po');el.innerHTML='';
+  PROJS.forEach(p=>{
+    let tb=null;
+    for(let g in db.groups)if(parseInt(g)!==sg&&db.groups[g].project===p.id)tb=parseInt(g);
+    const iT=tb!==null,iL=locked&&locked!==p.id;
+    const d=document.createElement('div');
+    d.className='po'+(sp===p.id?' ps':'')+(iT||iL?' pd':'');
+    d.innerHTML=`<div class="pn">${p.name}</div><div class="pd2">${p.en}</div>${iT?`<div class="ptk">⚠️ محجوز للمجموعة ${tb}</div>`:''}${locked===p.id?'<div style="font-size:.72rem;color:var(--green);font-weight:700;margin-top:2px">✓ مشروع هذه المجموعة</div>':''}`;
+    if(!iT&&!iL) d.onclick=()=>{sp=p.id;renderPO(locked);};
+    if(locked===p.id) sp=p.id;
+    el.appendChild(d);
+  });
+}
+function showAl(msg,type){
+  const el=document.getElementById('alm');
+  el.textContent=msg;el.className='al al-'+type;el.style.display='block';
+  setTimeout(()=>el.style.display='none',4000);
+}
+async function joinGroup(){
+  const name=document.getElementById('sn').value.trim();
+  if(!sg) return showAl('❌ اختر رقم المجموعة أولاً','e');
+  if(!name) return showAl('❌ أدخل اسمك الكامل','e');
+  if(!sp) return showAl('❌ اختر المشروع','e');
+  const btn=document.getElementById('jbtn');
+  btn.disabled=true;btn.textContent='⏳ جاري الحفظ...';
+  await loadDB();
+  if(gmArr(sg).length>=MAX){btn.disabled=false;btn.textContent='✅ تسجيل في المجموعة';return showAl('❌ المجموعة امتلأت للتو! اختر أخرى','e');}
+  if(allNames().includes(name)){btn.disabled=false;btn.textContent='✅ تسجيل في المجموعة';return showAl('❌ هذا الاسم مسجل بالفعل!','e');}
+  const k=Date.now().toString();
+  await fbPatch(`groups/${sg}/members`,{[k]:name});
+  await fbSet(`groups/${sg}/project`,sp);
+  document.getElementById('sm').textContent=`المجموعة ${sg} — ${pObj(sp).name}`;
+  document.getElementById('fa').style.display='none';
+  document.getElementById('sa').style.display='block';
+  await loadDB();renderMG();
+}
+function resetF(){
+  sg=null;sp=null;
+  document.getElementById('sn').value='';
+  document.getElementById('gi').style.display='none';
+  document.getElementById('alm').style.display='none';
+  document.getElementById('fa').style.display='block';
+  document.getElementById('sa').style.display='none';
+  const btn=document.getElementById('jbtn');btn.disabled=false;btn.textContent='✅ تسجيل في المجموعة';
+  renderGrid();renderPO(null);
+}
+function renderMG(){
+  const el=document.getElementById('mg');el.innerHTML='';
+  for(let i=1;i<=db.numGroups;i++){
+    const m=gmArr(i),p=gp(i);
+    const row=document.createElement('div');row.className='mrow';
+    row.innerHTML=`<span style="font-weight:700;color:var(--navy);min-width:36px">م${i}</span><span style="color:var(--muted);flex:1;font-size:.77rem;margin:0 7px">${m.length>0?m.join(' ، '):'— فارغة —'}</span><span class="tag ${tCls(p)}">${tLbl(p)}</span>`;
+    el.appendChild(row);
+  }
+  const n=new Date();
+  document.getElementById('ls').textContent=`${n.getHours().toString().padStart(2,'0')}:${n.getMinutes().toString().padStart(2,'0')}:${n.getSeconds().toString().padStart(2,'0')}`;
+}
+async function init(){
+  await loadDB();
+  document.getElementById('la').style.display='none';
+  document.getElementById('fa').style.display='block';
+  rdy=true;renderGrid();renderPO(null);renderMG();
+}
+async function refresh(){if(!rdy)return;await loadDB();renderGrid();renderMG();if(sg)renderPO(gp(sg));}
+init();
+setInterval(refresh,10000);
+</script>
+</body>
+</html>
