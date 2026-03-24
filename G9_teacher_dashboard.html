@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة المعلم — الصف التاسع</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+:root{--navy:#1b4332;--gold:#d4a017;--green:#2d6a4f;--red:#dc2626;--p1:#1b4332;--p1l:#d8f3dc;--p1b:#95d5b2;--p2:#6d4c41;--p2l:#efebe9;--p2b:#d7ccc8;--p3:#1565c0;--p3l:#e3f2fd;--p3b:#90caf9;--bg:#f0fdf4;--card:#fff;--text:#1a2332;--muted:#6b7a8d;--border:#c8e6c9;--r:14px;--sh:0 4px 20px rgba(27,67,50,.10);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Cairo',sans-serif;background:var(--bg);min-height:100vh;direction:rtl;color:var(--text)}
+.sbar{background:#0f2b1a;color:rgba(255,255,255,.85);text-align:center;padding:9px;font-size:.8rem;display:flex;align-items:center;justify-content:center;gap:8px}
+.sdot{width:8px;height:8px;border-radius:50%;background:#86efac;animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#86efac;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+header{background:linear-gradient(135deg,#0f2b1a,var(--navy));color:#fff;padding:15px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+header h1{font-size:1.3rem;font-weight:900}
+header p{font-size:.78rem;opacity:.72;margin-top:2px}
+.hbs{display:flex;gap:7px;flex-wrap:wrap}
+.hb{padding:8px 14px;border-radius:50px;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font-family:'Cairo',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s}
+.hb:hover{background:rgba(255,255,255,.2)}
+.hbd{border-color:#fca5a5;color:#fca5a5}
+.wrap{max-width:1100px;margin:0 auto;padding:20px 14px 50px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.stat{background:var(--card);border-radius:11px;padding:12px 18px;box-shadow:var(--sh);border:1.5px solid var(--border);text-align:center;min-width:100px}
+.stn{font-size:1.75rem;font-weight:900;color:var(--navy)}.stl{font-size:.7rem;color:var(--muted)}
+.tb{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.tb label{font-weight:700;font-size:.88rem;color:var(--navy)}
+.ngi{width:80px;padding:8px 10px;border:2px solid var(--border);border-radius:8px;font-family:'Cairo',sans-serif;font-size:.9rem}
+.tbn{padding:8px 14px;border-radius:9px;border:none;font-family:'Cairo',sans-serif;font-size:.83rem;font-weight:700;cursor:pointer;transition:all .15s}
+.tbp{background:var(--navy);color:#fff}.tbp:hover{background:#2d6a4f}
+.tbs{background:var(--bg);color:var(--navy);border:1.5px solid var(--border)}.tbs:hover{background:var(--border)}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:13px}
+.gcrd{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;border:1.5px solid var(--border)}
+.ghdr{padding:11px 14px;display:flex;justify-content:space-between;align-items:center;color:#fff;font-weight:900}
+.c0{background:linear-gradient(135deg,#1b4332,#2d6a4f)}.c1{background:linear-gradient(135deg,#6d4c41,#8d6e63)}.c2{background:linear-gradient(135deg,#1565c0,#1976d2)}.c3{background:linear-gradient(135deg,#4a148c,#7b1fa2)}.c4{background:linear-gradient(135deg,#b45309,#d97706)}.c5{background:linear-gradient(135deg,#0e7490,#0891b2)}.c6{background:linear-gradient(135deg,#c62828,#e53935)}.c7{background:linear-gradient(135deg,#00695c,#00897b)}.c8{background:linear-gradient(135deg,#283593,#3949ab)}.c9{background:linear-gradient(135deg,#558b2f,#689f38)}
+.gbdg{font-size:.68rem;padding:2px 8px;border-radius:50px;background:rgba(255,255,255,.22)}
+.gptag{margin:8px 12px 5px;padding:5px 10px;border-radius:8px;font-size:.77rem;font-weight:700}
+.pt1{background:var(--p1l);color:var(--p1);border:1.5px solid var(--p1b)}.pt2{background:var(--p2l);color:var(--p2);border:1.5px solid var(--p2b)}.pt3{background:var(--p3l);color:var(--p3);border:1.5px solid var(--p3b)}.pt0{background:#f5f5f5;color:#9ca3af;border:1.5px dashed #d1d5db}
+.gstu{padding:0 10px 10px}
+.sr{display:flex;justify-content:space-between;align-items:center;padding:6px 8px;border-radius:7px;background:#f9fafb;border:1px solid #e5e7eb;margin-bottom:3px;font-size:.82rem}
+.snm{font-weight:600;flex:1}
+.sbs{display:flex;gap:3px}
+.sib{width:26px;height:26px;border-radius:6px;border:none;cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+.sd{background:#fee2e2;color:var(--red)}.sd:hover{background:#fca5a5}
+.sm{background:#e0f2fe;color:#0369a1}.sm:hover{background:#7dd3fc}
+.es{padding:5px 8px;border-radius:7px;background:#fafafa;border:1.5px dashed #c8e6c9;color:#c0ccd8;font-size:.75rem;text-align:center;font-style:italic;margin-bottom:3px}
+.cpb{height:5px;background:#e5e7eb;overflow:hidden}
+.cpf{height:100%;transition:width .3s}.cpl{background:var(--green)}.cpm{background:var(--gold)}.cpff{background:var(--red)}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.44);z-index:999;align-items:center;justify-content:center;padding:16px}
+.modal.open{display:flex}
+.mbox{background:#fff;border-radius:var(--r);padding:24px;max-width:380px;width:100%;direction:rtl}
+.mbox h3{font-size:1.05rem;font-weight:900;color:var(--navy);margin-bottom:10px}
+.mbox p{color:var(--muted);font-size:.86rem}
+select{width:100%;padding:10px 12px;border:2px solid var(--border);border-radius:9px;font-family:'Cairo',sans-serif;font-size:.9rem;margin-top:8px}
+.mbtns{display:flex;gap:8px;margin-top:15px}
+.mb{flex:1;padding:11px;border-radius:9px;border:none;font-family:'Cairo',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer}
+.mb-c{background:#f3f4f6;color:var(--text)}.mb-ok{background:linear-gradient(135deg,var(--navy),#2d6a4f);color:#fff}
+.mb-r{background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff}
+.loading{text-align:center;padding:30px;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="sbar" id="sbar"><div class="spin"></div> جاري الاتصال...</div>
+<header>
+  <div><h1>🔧 لوحة المعلم — الصف التاسع</h1><p>Firebase — تحديث فوري بدون تسجيل ✅</p></div>
+  <div class="hbs">
+    <button class="hb" onclick="refresh()">🔄 تحديث الآن</button>
+    <button class="hb" onclick="exportCSV()">📥 تصدير CSV</button>
+        <button class="hb" onclick="document.getElementById('csv-import').click()">📤 استيراد CSV</button>
+    <input type="file" id="csv-import" accept=".csv" style="display:none" onchange="importCSV(this)">
+    <button class="hb" onclick="window.print()">🖨️ طباعة</button>
+    <button class="hb hbd" onclick="openM('rm')">🗑️ إعادة الضبط</button>
+  </div>
+</header>
+<div class="wrap">
+  <div class="stats" id="sb"><div class="loading">جاري تحميل البيانات...</div></div>
+  <div class="tb">
+    <label>عدد المجموعات:</label>
+    <input type="text" class="ngi" id="ngi" value="10"/>
+    <button class="tbn tbp" onclick="updateNG()">تحديث</button>
+  </div>
+  <div class="ggrid" id="gg"><div class="loading">⏳ جاري التحميل...</div></div>
+</div>
+<div class="modal" id="mm">
+  <div class="mbox"><h3>↔️ نقل الطالب</h3><p id="ml"></p>
+    <select id="mt"></select>
+    <div class="mbtns"><button class="mb mb-c" onclick="closeM('mm')">إلغاء</button><button class="mb mb-ok" onclick="confirmMove()">نقل ✓</button></div>
+  </div>
+</div>
+<div class="modal" id="rm">
+  <div class="mbox"><h3>⚠️ تأكيد إعادة الضبط</h3><p>هل تريد حذف جميع بيانات تسجيل الصف التاسع؟</p>
+    <div class="mbtns"><button class="mb mb-c" onclick="closeM('rm')">إلغاء</button><button class="mb mb-r" onclick="doReset()">نعم، حذف الكل</button></div>
+  </div>
+</div>
+<script>
+const FB_URL='https://school-ai-projects-d4d48-default-rtdb.firebaseio.com';
+const DB_KEY='g9';
+const MAX=5;
+const PROJS=[{id:1,name:'🏠 المشروع 1: مهام المنزل العائلية'},{id:2,name:'🍽️ المشروع 2: قياس جودة الوجبات'},{id:3,name:'🦾 المشروع 3: ذراع فرز النفايات'}];
+let db={numGroups:10,groups:{}},mvi=null;
+async function fbGet(p){const r=await fetch(`${FB_URL}/${DB_KEY}/${p}.json`);return r.ok?r.json():null;}
+async function fbSet(p,v){await fetch(`${FB_URL}/${DB_KEY}/${p}.json`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(v)});}
+async function fbDel(p){await fetch(`${FB_URL}/${DB_KEY}/${p}.json`,{method:'DELETE'});}
+async function fbPatch(p,v){await fetch(`${FB_URL}/${DB_KEY}/${p}.json`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(v)});}
+async function loadDB(){
+  try{
+    const data=await fbGet('');
+    db.groups=   (data&&data.groups)   ?data.groups   :{};
+    db.numGroups=(data&&data.numGroups)?data.numGroups:10;
+    const n=new Date(),t=`${n.getHours().toString().padStart(2,'0')}:${n.getMinutes().toString().padStart(2,'0')}:${n.getSeconds().toString().padStart(2,'0')}`;
+    const tot=Object.values(db.groups).reduce((a,g)=>a+Object.keys(g.members||{}).length,0);
+    document.getElementById('sbar').innerHTML=`<span class="sdot"></span> متصل — ${t} — ${tot} طالب مسجل`;
+  }catch(e){document.getElementById('sbar').textContent='⚠️ خطأ في الاتصال';}
+}
+function gm(g){return(db.groups[g]&&db.groups[g].members)?db.groups[g].members:{};}
+function gmArr(g){return Object.values(gm(g));}
+function gmKeys(g){return Object.keys(gm(g));}
+function gp(g){return(db.groups[g]&&db.groups[g].project)?db.groups[g].project:null;}
+function pO(id){return PROJS.find(p=>p.id===id);}
+function tC(id){return id?'pt'+id:'pt0';}
+function renderAll(){
+  document.getElementById('ngi').value=db.numGroups;
+  const grid=document.getElementById('gg');grid.innerHTML='';
+  let total=0,active=0,full=0;
+  for(let i=1;i<=db.numGroups;i++){
+    const members=gmArr(i),keys=gmKeys(i),p=gp(i),po=pO(p);
+    total+=members.length;if(members.length>0)active++;if(members.length>=MAX)full++;
+    const pct=(members.length/MAX)*100,cc=pct<60?'cpl':pct<100?'cpm':'cpff';
+    let rows=members.map((s,idx)=>`<div class="sr"><span class="snm">👤 ${s}</span><div class="sbs"><button class="sib sm" onclick="openMov('${s.replace(/'/g,"\\'")}','${keys[idx]}',${i})">↔️</button><button class="sib sd" onclick="delS('${keys[idx]}',${i})">🗑️</button></div></div>`).join('');
+    for(let e=0;e<MAX-members.length;e++) rows+=`<div class="es">— مقعد فارغ —</div>`;
+    const card=document.createElement('div');card.className='gcrd';
+    card.innerHTML=`<div class="ghdr c${(i-1)%10}"><span>المجموعة ${i}</span><span class="gbdg">${members.length}/${MAX}</span></div><div class="cpb"><div class="cpf ${cc}" style="width:${pct}%"></div></div><div class="gptag ${tC(p)}">${po?po.name:'⏳ لم يُختر مشروع بعد'}</div><div class="gstu">${rows}</div>`;
+    grid.appendChild(card);
+  }
+  document.getElementById('sb').innerHTML=`<div class="stat"><div class="stn">${total}</div><div class="stl">طالب مسجل</div></div><div class="stat"><div class="stn">${active}</div><div class="stl">مجموعة نشطة</div></div><div class="stat"><div class="stn">${full}</div><div class="stl">مجموعة ممتلئة</div></div><div class="stat"><div class="stn">${db.numGroups-active}</div><div class="stl">مجموعة فارغة</div></div>`;
+}
+async function delS(key,gid){
+  if(!confirm('هل تريد حذف هذا الطالب؟'))return;
+  await fbDel(`groups/${gid}/members/${key}`);
+  const rem=await fbGet(`groups/${gid}/members`);
+  if(!rem||Object.keys(rem).length===0) await fbDel(`groups/${gid}`);
+  await refresh();
+}
+function openMov(name,key,from){
+  mvi={name,key,from};
+  document.getElementById('ml').textContent=`الطالب: ${name} (من المجموعة ${from})`;
+  const sel=document.getElementById('mt');sel.innerHTML='';
+  for(let i=1;i<=db.numGroups;i++){
+    if(i===from)continue;
+    const cnt=gmArr(i).length;
+    const opt=document.createElement('option');
+    opt.value=i;opt.textContent=`المجموعة ${i} (${cnt}/${MAX})${cnt>=MAX?' — ممتلئة':''}`;
+    if(cnt>=MAX)opt.disabled=true;
+    sel.appendChild(opt);
+  }
+  openM('mm');
+}
+async function confirmMove(){
+  const tgt=parseInt(document.getElementById('mt').value);
+  const {name,key,from}=mvi;
+  if(gmArr(tgt).length>=MAX){alert('المجموعة المستهدفة ممتلئة!');return;}
+  await fbDel(`groups/${from}/members/${key}`);
+  const rem=await fbGet(`groups/${from}/members`);
+  if(!rem||Object.keys(rem).length===0) await fbDel(`groups/${from}`);
+  await fbPatch(`groups/${tgt}/members`,{[Date.now().toString()]:name});
+  await refresh();closeM('mm');
+}
+async function updateNG(){
+  const v=parseInt(document.getElementById('ngi').value);
+  if(isNaN(v)||v<1||v>50){alert('أدخل عدداً بين 1 و 50');return;}
+  await fbSet('numGroups',v);db.numGroups=v;renderAll();
+}
+async function doReset(){await fbDel('groups');db.groups={};closeM('rm');renderAll();}
+function exportCSV(){
+  let csv='المجموعة,اسم الطالب,المشروع\n';
+  for(let i=1;i<=db.numGroups;i++){const m=gmArr(i),p=gp(i),po=pO(p);if(m.length>0)m.forEach(s=>{csv+=`${i},${s},${po?po.name:'غير محدد'}\n`;});else csv+=`${i},— فارغة —,—\n`;}
+  const b=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='groups_g9.csv';a.click();
+}
+
+function importCSV(input) {
+  const file = input.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = async function(e) {
+    const text = e.target.result;
+    const lines = text.split('\n').filter(l => l.trim() && !l.startsWith('المجموعة'));
+    let imported = 0, skipped = 0;
+    // Reload fresh data first
+    await loadDB();
+    for(const line of lines) {
+      const parts = line.split(',');
+      if(parts.length < 3) continue;
+      const gid = parseInt(parts[0]);
+      const name = parts[1].trim();
+      const projName = parts[2].trim();
+      if(!gid || !name || name === '— فارغة —') continue;
+      // Find project id from name
+      const proj = PROJS.find(p => p.name.includes(projName.replace(/[^\u0600-\u06FF\w]/g,'')));
+      const projId = proj ? proj.id : null;
+      if(gmArr(gid).length >= MAX) { skipped++; continue; }
+      const k = Date.now().toString() + Math.random().toString(36).substr(2,4);
+      await fbPatch(`groups/${gid}/members`, {[k]: name});
+      if(projId) await fbSet(`groups/${gid}/project`, projId);
+      imported++;
+      await new Promise(r => setTimeout(r, 50)); // small delay
+    }
+    alert(`✅ تم استيراد ${imported} طالب\n⚠️ تم تخطي ${skipped} (مجموعات ممتلئة)`);
+    input.value = '';
+    await refresh();
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+
+function openM(id){document.getElementById(id).classList.add('open');}
+function closeM(id){document.getElementById(id).classList.remove('open');}
+async function refresh(){await loadDB();renderAll();}
+refresh();
+setInterval(refresh,10000);
+</script>
+</body>
+</html>
